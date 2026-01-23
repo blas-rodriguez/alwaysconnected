@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AlwaysConnected — Instant Internet Abroad</title>
+  <meta name="description" content="Stay connected abroad in minutes. No roaming. No local SIM cards. Find the best eSIM for your destination." />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#111827;
+      --muted:#9ca3af;
+      --text:#e5e7eb;
+      --accent:#22c55e;
+      --accent2:#60a5fa;
+      --border: rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(96,165,250,.20), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,.18), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      text-decoration:none;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display:grid;place-items:center;
+      font-weight:900;color:#071018;
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+    }
+    .brand span{font-weight:800;letter-spacing:.2px}
+    nav{display:flex;gap:14px;flex-wrap:wrap}
+    nav a{
+      text-decoration:none;
+      color: var(--muted);
+      padding:8px 10px;border-radius:10px;
+    }
+    nav a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      padding:28px 0 18px;
+    }
+    .card{
+      background: rgba(17,24,39,.75);
+      border: 1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height:1.1;
+      letter-spacing:-.6px;
+    }
+    .lead{color:var(--muted);font-size: 16px;margin: 0 0 16px}
+    .pillrow{display:flex;gap:10px;flex-wrap:wrap;margin: 12px 0 18px}
+    .pill{
+      font-size:13px;color: var(--text);
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{
+      appearance:none;border:0;cursor:pointer;
+      padding:12px 14px;border-radius:14px;
+      font-weight:800;
+      display:inline-flex;align-items:center;gap:10px;
+      text-decoration:none;
+      transition: transform .08s ease, background .2s ease, opacity .2s ease;
+      user-select:none;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color:#071018;
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color: var(--text);
+    }
+    .btn:hover{opacity:.92}
+    .small{font-size:12.5px;color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin: 14px 0 0;
+    }
+    .kpi h3{margin:0 0 4px;font-size:15px}
+    .kpi p{margin:0;color:var(--muted);font-size:13px}
+
+    .sideTitle{margin:0 0 10px;font-size:16px}
+    label{font-size:13px;color:var(--muted)}
+    select, input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline:none;
+      margin-top:6px;
+    }
+    .hint{margin-top:10px;color:var(--muted);font-size:12.5px}
+    .section{padding: 18px 0}
+    .section h2{margin:0 0 10px;font-size:22px}
+    .two{
+      display:grid;grid-template-columns: 1fr 1fr;gap:14px;
+    }
+    .steps{display:grid;gap:12px}
+    .step{
+      display:flex;gap:12px;align-items:flex-start;
+      padding:14px;border-radius:16px;border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .badge{
+      min-width:30px;height:30px;border-radius:10px;
+      display:grid;place-items:center;
+      background: rgba(96,165,250,.18);
+      border:1px solid rgba(96,165,250,.25);
+      color: var(--text);
+      font-weight:900;
+    }
+    .step b{display:block;margin-bottom:2px}
+    .step p{margin:0;color:var(--muted);font-size:13px}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    th, td{padding:12px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}
+    th{color:var(--text);background: rgba(255,255,255,.04)}
+    td{color:var(--muted)}
+    tr:last-child td{border-bottom:0}
+    .faq details{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background: rgba(255,255,255,.03);
+      padding:12px 14px;
+    }
+    .faq details + details{margin-top:10px}
+    summary{cursor:pointer;font-weight:800}
+    .faq p{margin:10px 0 0;color:var(--muted);font-size:13px}
+    footer{
+      padding: 18px 0 28px;
+      color: var(--muted);
+      font-size:12.5px;
+    }
+    .disclaimer{
+      margin-top:10px;
+      padding:12px 14px;border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">AC</div>
+        <span>AlwaysConnected</span>
+      </a>
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#compare">Roaming vs eSIM</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Instant Internet Abroad.<br/>No Roaming. No Local SIMs.</h1>
+        <p class="lead">
+          Stay connected in minutes with an eSIM. Perfect for travel, maps, messaging, and remote work.
+        </p>
+
+        <div class="pillrow">
+          <div class="pill">Works in 190+ countries</div>
+          <div class="pill">Activate in minutes</div>
+          <div class="pill">Keep your main SIM</div>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn primary" id="ctaPrimary" href="#plans">
+            Get connected now <span aria-hidden="true">→</span>
+          </a>
+          <a class="btn secondary" href="#how">
+            How it works
+          </a>
+        </div>
+
+        <div class="grid">
+          <div class="kpi">
+            <h3>Fast setup</h3>
+            <p>Buy, scan QR, and go online.</p>
+          </div>
+          <div class="kpi">
+            <h3>Predictable cost</h3>
+            <p>Choose days/data — avoid roaming surprises.</p>
+          </div>
+          <div class="kpi">
+            <h3>Travel-proof</h3>
+            <p>Useful when Wi-Fi is slow or unreliable.</p>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:14px">
+          Tip: Check if your phone supports eSIM (most iPhones XR/XS+ and many Android models do).
+        </p>
+      </div>
+
+      <div class="card" id="plans">
+        <h3 class="sideTitle">Find the best eSIM for your destination</h3>
+
+        <label for="country">Where are you traveling?</label>
+        <select id="country">
+          <option value="global">Choose a country…</option>
+          <option value="brazil">Brazil</option>
+          <option value="argentina">Argentina</option>
+          <option value="chile">Chile</option>
+          <option value="uruguay">Uruguay</option>
+          <option value="usa">United States</option>
+          <option value="spain">Spain</option>
+          <option value="italy">Italy</option>
+          <option value="france">France</option>
+          <option value="uk">United Kingdom</option>
+          <option value="mexico">Mexico</option>
+        </select>
+
+        <div class="ctaRow" style="margin-top:14px">
+          <a class="btn primary" id="countryCta" href="#" target="_blank" rel="noopener">
+            See recommended plans →
+          </a>
+          <a class="btn secondary" id="globalCta" href="#" target="_blank" rel="noopener">
+            Global eSIM option
+          </a>
+        </div>
+
+        <p class="hint">
+          I recommend reliable providers and compare options based on price, coverage, and ease of setup.
+        </p>
+
+        <div class="disclaimer">
+          <b style="display:block;margin-bottom:6px;color:var(--text)">Affiliate disclosure</b>
+          <span class="small">
+            This page contains affiliate links. I may earn a commission at no extra cost to you.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two" id="how">
+      <div class="card">
+        <h2>How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="badge">1</div>
+            <div>
+              <b>Pick a plan</b>
+              <p>Select your destination and choose a plan (days/data).</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="badge">2</div>
+            <div>
+              <b>Install your eSIM</b>
+              <p>Scan the QR code or install via the provider app.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="badge">3</div>
+            <div>
+              <b>Go online instantly</b>
+              <p>Turn on the eSIM line and you’re connected — no store visit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="compare">
+        <h2>Roaming vs eSIM</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Roaming</th>
+              <th>eSIM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cost predictability</td>
+              <td>Often unpredictable</td>
+              <td>Choose a plan upfront</td>
+            </tr>
+            <tr>
+              <td>Setup speed</td>
+              <td>Depends on carrier</td>
+              <td>Minutes (QR/app)</td>
+            </tr>
+            <tr>
+              <td>Need local store</td>
+              <td>Sometimes</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Keep your SIM</td>
+              <td>Yes</td>
+              <td>Yes (dual SIM)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ctaRow" style="margin-top:14px">
+          <a class="btn primary" href="#plans">Check plans →</a>
+          <a class="btn secondary" href="#faq">Questions?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="card faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>Will this work on my phone?</summary>
+          <p>
+            You need an eSIM-compatible phone and an unlocked device. Most modern iPhones (XR/XS and newer)
+            support eSIM. Many recent Android models do too.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I keep my WhatsApp number?</summary>
+          <p>
+            Yes. WhatsApp stays on your main number. You just use the eSIM for data.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is eSIM better than buying a local SIM?</summary>
+          <p>
+            For many travelers, yes: it’s faster and more convenient. If you’ll stay long-term in one country,
+            a local SIM can sometimes be cheaper. That’s why I recommend options by destination.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do you provide the eSIM?</summary>
+          <p>
+            No. I recommend and compare trusted providers. Purchases happen on the provider’s website/app.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div class="disclaimer">
+        <b style="display:block;margin-bottom:6px;color:var(--text)">Disclaimer</b>
+        AlwaysConnected is an independent project. We do not operate a mobile network.
+        Coverage and speeds depend on local carriers and the provider you choose.
+      </div>
+      <p style="margin:12px 0 0">
+        © <span id="year"></span> AlwaysConnected
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // ✅ Replace these with your real affiliate URLs:
+    // Example:
+    // const AFFILIATE = {
+    //   global: "https://provider.com/global?ref=YOURCODE",
+    //   brazil: "https://provider.com/br?ref=YOURCODE",
+    //   ...
+    // };
+
+    const AFFILIATE = {
+      global: "https://example.com/your-global-affiliate-link",
+      brazil: "https://example.com/your-brazil-affiliate-link",
+      argentina: "https://example.com/your-argentina-affiliate-link",
+      chile: "https://example.com/your-chile-affiliate-link",
+      uruguay: "https://example.com/your-uruguay-affiliate-link",
+      usa: "https://example.com/your-usa-affiliate-link",
+      spain: "https://example.com/your-spain-affiliate-link",
+      italy: "https://example.com/your-italy-affiliate-link",
+      france: "https://example.com/your-france-affiliate-link",
+      uk: "https://example.com/your-uk-affiliate-link",
+      mexico: "https://example.com/your-mexico-affiliate-link"
+    };
+
+    const countrySelect = document.getElementById("country");
+    const countryCta = document.getElementById("countryCta");
+    const globalCta = document.getElementById("globalCta");
+    const ctaPrimary = document.getElementById("ctaPrimary");
+
+    function updateLinks() {
+      const key = countrySelect.value || "global";
+      const url = AFFILIATE[key] || AFFILIATE.global;
+
+      countryCta.href = url;
+      globalCta.href = AFFILIATE.global;
+
+      // Make primary CTA jump and feel consistent
+      ctaPrimary.addEventListener("click", () => {
+        // no-op: anchor behavior
+      });
+
+      // Disable country CTA if not chosen
+      if (key === "global") {
+        countryCta.style.opacity = "0.6";
+        countryCta.style.pointerEvents = "none";
+      } else {
+        countryCta.style.opacity = "1";
+        countryCta.style.pointerEvents = "auto";
+      }
+    }
+
+    countrySelect.addEventListener("change", updateLinks);
+    updateLinks();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
